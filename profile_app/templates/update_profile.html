@@ -1,0 +1,31 @@
+{% load menu_tags %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Edit profile</title>
+  </head>
+  <body background="https://s2.best-wallpaper.net/wallpaper/3840x2160/1703/Strawberries-and-honey_3840x2160.jpg" style="background-attachment: fixed">
+
+  <div id="main_menu">
+        {% main_menu %}
+  </div>
+
+    <h1 style="color:#8B4513">Editing profile data {{ user.username }}</h1>
+
+    <p style="color:#FFD700">Your data:</p>
+
+  <form method="post" enctype="multipart/form-data" style="color:#FFD700">
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    {% if user.avatar %}
+
+  <div>
+      <img src="{{ user.avatar.url }}" alt="" width="100px" height="100px">
+  </div>{% endif %}
+
+    {% csrf_token %}
+
+    <p><input type="submit" value="Save"></p>
+  </form>
+  </body>
+</html>

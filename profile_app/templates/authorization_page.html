@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Authorization</title>
+  </head>
+  <body background="https://s1.1zoom.ru/b7546/720/Pastry_Berry_Blueberries_Honey_Powdered_sugar_562452_3840x2160.jpg" style="background-attachment: fixed">
+    <a href="registration" style="color: #FFFF00">Registration</a>
+
+    <div style="color:#FFFFFF">
+        Welcome, please login or register to continue :)
+    </div>
+
+    {% if error %}
+
+    <div style="color:#FF0000">
+        <b>You have entered an incorrect username or password. Try again!</b>
+    </div>
+
+    {% endif %}
+    <form method="post" action="/authorization" style="color:#FFFFFF">
+          {% csrf_token %}
+          {{ auth_form }}
+          <input type="submit" value="Sign in">
+    </form>
+  </body>
+</html>

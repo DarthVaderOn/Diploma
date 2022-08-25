@@ -1,0 +1,44 @@
+    <a style="color: #00CED1">{% load menu_tags %} </a>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+  </head>
+  <body background="https://s1.1zoom.ru/b6047/96/Honey_Pomegranate_Apples_Wood_planks_Jar_Grain_544793_3840x2160.jpg" style="background-attachment: fixed">
+
+<div id="main_menu" style="color: #00CED1">
+    {% main_menu %}
+</div>
+
+    <a href="update" style="color: #00CED1">Edit profile</a>
+
+    <h1 style="color:#FFFFFF">Your profile {{ user.username }}</h1>
+
+    {% if avatar.avatar %}
+
+    <div>
+        <img src="{{ avatar.avatar.url }}" alt="" width="100px" height="100px">
+    </div>
+
+    {% else %}
+
+    <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/1995/1995515.png" alt="" width="100px" height="100px">
+    </div>
+
+    {% endif %}
+
+    <h3 style="color:#FFD700"><b>Last Name:</b> <i style="color:#FFFFFF">{{ user.last_name }}</i></h3>
+<hr>
+    <h3 style="color:#FFD700"><b>First Name:</b> <i style="color:#FFFFFF">{{ user.first_name }}</i></h3>
+<hr>
+    <h3 style="color:#FFD700"><b>Email:</b> <i style="color:#FFFFFF">{{ user.email }}</i></h3>
+<hr>
+    <h3 style="color:#FFD700"><b>Phone Number:</b> <i style="color:#FFFFFF">{{ avatar.phone }}</i></h3>
+<hr>
+    <h3 style="color:#FFD700"><b>Information About You:</b> <i style="color:#FFFFFF">{{ avatar.about }}</i></h3>
+<hr>
+
+
+  </body>
+</html>

@@ -1,0 +1,69 @@
+    {% load menu_tags %}
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+  </head>
+
+  <body background="https://s2.best-wallpaper.net/wallpaper/2560x1600/2204/Jar-honey-green-background_2560x1600.jpg" style="background-attachment: fixed">
+
+    <div id="user_menu">
+        {% user_menu %}
+    </div>
+
+    <div style="color:#FFFFFF">
+        Welcome {{user.first_name}} {{user.last_name}}!
+    </div>
+
+    <div id="main_menu">
+        {% main_menu %}
+    </div>
+
+<h3 style="color:#FFFFFF">Most Wanted Categories:</h3>
+
+    <div class="row" >
+        {% for item in tag %}
+            <a href="/tag/{{ item.title }}" class="list-group-item list-group-item-action" style="color: #00CED1">{{ item.title }}<span class="badge badge-primary badge-pill" > [{{ item.count }}]</span></a>
+        {% endfor %}
+    </div>
+
+        {% if error %}
+            <h3 style="color:#FFFFFF">{{ error }}</h3>
+        {% else %}
+
+        {% for post in posts %}
+             <h4 style="color:#FFFFFF">tag: <a href="{% url 'get_tags' post.tag.title %}" style="color: #00CED1">{{ post.tag.title }}</a></h4>
+
+    <div class="card-body">
+             <h3 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFFFF">{{ post.title }}</h3>
+    <div>
+
+        {% for image in image_post %}
+        {% if image.post == post %}
+            <a href="{{image.image_post.url}}" >
+        {% if image.image_post %}
+            <img src="{{ image.image_post.url }}" target="_blank" alt="" width="800px" height="600px">
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+            </a>
+    </div>
+
+    </div>
+        <p class="card-text" style="color:#FFFFFF" >{{ post.text }}</p>
+        <h3 class="text-bold" style="color:#FF8C00"> <b>{{ post.user }}</b> </h3>
+    <div class="card-footer text-muted" style="color:#FFFFFF">
+        {{ post.created_at|date:"d/m/Y  H:i"}}
+    </div>
+
+<hr>
+        {% empty %}
+            <h3 style="color:#FFFFFF">Oops. Oh no, we don't have any products yet. But you can create your own</h3>
+    {% endfor %}
+    {% endif %}
+  </body>
+</html>
