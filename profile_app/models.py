@@ -15,4 +15,3 @@ class Profile(models.Model):
         blank=True,
     )
     about = models.TextField(max_length=4096, blank=True)
-    github_link = models.URLField(blank=True)

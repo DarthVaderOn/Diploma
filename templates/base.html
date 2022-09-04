@@ -39,14 +39,16 @@
              <h4 style="color:#FFFFFF">tag: <a href="{% url 'get_tags' post.tag.title %}" style="color: #00CED1">{{ post.tag.title }}</a></h4>
 
     <div class="card-body">
-             <h3 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFFFF">{{ post.title }}</h3>
+        <h4>
+             <a href="http://127.0.0.1:8000/catalog/{{ post.id }}" class="list-group-item list-group-item-action" style="color: #00CED1">{{ post.title }}</a>
+        </h4>
     <div>
 
         {% for image in image_post %}
         {% if image.post == post %}
             <a href="{{image.image_post.url}}" >
         {% if image.image_post %}
-            <img src="{{ image.image_post.url }}" target="_blank" alt="" width="800px" height="600px">
+            <img src="{{ image.image_post.url }}" target="_blank" alt="" width="" height="600px">
         {% endif %}
         {% endif %}
         {% endfor %}
@@ -55,6 +57,7 @@
 
     </div>
         <p class="card-text" style="color:#FFFFFF" >{{ post.text }}</p>
+        <h1 class="text-bold" style="color:#FFFFFF"> <b>{{ post.price }} BYR</b> </h1>
         <h3 class="text-bold" style="color:#FF8C00"> <b>{{ post.user }}</b> </h3>
     <div class="card-footer text-muted" style="color:#FFFFFF">
         {{ post.created_at|date:"d/m/Y  H:i"}}

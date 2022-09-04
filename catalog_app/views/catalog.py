@@ -12,13 +12,13 @@ class CatalogPageView(View):
     def get(self, request):
         """Представление постов"""
 
-        posts = Post.objects.all()
+        posts = Post.objects.filter(is_public=True).order_by('-created_at')
 
         if posts:
 
             tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
             image_post = Media.objects.all()
-            contex = {'title': 'Hello World!',
+            contex = {'title': 'Catalog',
                       'posts': posts,
                       'image_post': image_post,
                       'tag': tag,
@@ -29,3 +29,19 @@ class CatalogPageView(View):
                       }
 
         return render(request, 'all_catalog.html', contex)
+
+
+    def get_tags(request, title):
+        """Представление тегов"""
+
+        posts = Post.objects.filter(tag__title=title).order_by('-id').all()
+        tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
+        image_post = Media.objects.all()
+        tags = Tag.objects.get(title=title)
+        return render(request, 'tag.html', {
+            'title': 'Categories',
+            'posts': posts,
+            'image_post': image_post,
+            'tag': tag,
+            'tags': tags,
+        })

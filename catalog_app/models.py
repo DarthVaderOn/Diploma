@@ -16,6 +16,9 @@ class Post(models.Model):
     is_public = models.BooleanField(default=True)
     tag = models.ForeignKey(Tag, on_delete=models.PROTECT, verbose_name='Tags')
     file = models.ForeignKey(MediaFile, on_delete=models.SET_NULL, null=True, blank=True)
+    year = models.PositiveIntegerField("Year", default=2022)
+    country = models.CharField("Country", max_length=10)
+    price = models.PositiveIntegerField("Price", default=0, help_text="Indicate the amount in Belarusian rubles")
 
 
 class Media(models.Model):

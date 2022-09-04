@@ -1,0 +1,58 @@
+<html lang="en">
+  <body background="https://s2.best-wallpaper.net/wallpaper/2880x1800/2008/Honey-jar-flowers-sweet_2880x1800.jpg" style="background-attachment: fixed">
+    {% load menu_tags %}
+
+    <div id="main_menu">
+        {% main_menu %}
+    </div>
+
+    {% block title %}
+
+    <title>{{ one_product.title }}</title>
+
+    {% endblock %}
+
+    <div class="card-body">
+             <h3 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFFFF">{{ one_product.title }}</h3>
+    <div>
+        {% for image in image_post %}
+        {% if image.post == one_product %}
+            <a href="{{image.image_post.url}}" >
+{% if image.image_post %}
+            <img src="{{ image.image_post.url }}" target="_blank" alt="" width="" height="600px">
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+            </a>
+    </div>
+
+    </div>
+        <p class="card-text" style="color:#FFFFFF" >{{ one_product.text }}</p>
+        <h1 class="text-bold" style="color:#FFFFFF"> <b>{{ one_product.price }} BYR</b> </h1>
+        <h3 class="text-bold" style="color:#FF8C00"> <b>{{ one_product.user }}</b> </h3>
+    <div class="card-footer text-muted" style="color:#FFFFFF">
+        {{ one_product.created_at|date:"d/m/Y  H:i"}}
+    </div>
+      {% for review in reviews %}
+    <div class="review">
+        <p class="info">
+            Review {{ forloop.counter }} by {{ review.user }}
+            {{ review.created_at }}
+        </p>
+        {{ review.body|linebreaks }}
+    </div>
+{% empty %}
+    <p>There are no reviews yet.</p>
+{% endfor %}
+  {% if new_review %}
+    <h2>Your review has been added.</h2>
+{% else %}
+    <h2>Add a new review</h2>
+    <form action="." method="post">
+        {{ review_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Add review"></p>
+    </form>
+{% endif %}
+    </body>
+</html>

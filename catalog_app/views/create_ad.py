@@ -12,7 +12,7 @@ class PostCreate(View):
 
         form = AddImagePost()
         return render(request, 'create_ad.html', context={
-            'title': 'New Post',
+            'title': 'Sell Goods',
             'form': form
         })
 
@@ -25,7 +25,7 @@ class PostCreate(View):
 
         if len(files) > 5:
             return render(request, 'create_ad.html', context={
-                'title': 'New Post',
+                'title': 'Sell Goods',
                 'form': bound_form,
                 'error': 'Image upload error: Allowed upload limit is no more than 5 files!'
             })
@@ -36,8 +36,8 @@ class PostCreate(View):
             post_object.save()
             for f in files:
                 Media.objects.create(post=post_object,image_post=f)
-            return redirect('my_post')
+            return redirect('catalog_page')
         return render(request, 'main_page.html', context={
-            'title': 'New Post',
+            'title': 'Sell Goods',
             'form': bound_form
         })
