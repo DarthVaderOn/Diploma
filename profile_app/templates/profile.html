@@ -6,6 +6,14 @@
   </head>
   <body background="https://s1.1zoom.ru/b6047/96/Honey_Pomegranate_Apples_Wood_planks_Jar_Grain_544793_3840x2160.jpg" style="background-attachment: fixed">
 
+<div id="user_menu">
+        {% user_menu %}
+</div>
+
+<div style="color:#FFFFFF">
+        Welcome {{user.first_name}} {{user.last_name}}!
+</div>
+
 <div id="main_menu" style="color: #00CED1">
     {% main_menu %}
 </div>

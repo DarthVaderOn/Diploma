@@ -1,7 +1,7 @@
 from profile_app.models import Profile
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from rest_framework.viewsets import GenericViewSet
-from profile_app.api.serializers.user import ProfileSerializer
+from profile_app.api.serializers.profile import ProfileSerializer
 from rest_framework import filters, permissions
 
 from user_app.models import User

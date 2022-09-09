@@ -1,6 +1,14 @@
   <body background="https://s2.best-wallpaper.net/wallpaper/2880x1800/2108/Cocktail-peanuts-honey-cocoa-milk-drinks_2880x1800.jpg" style="background-attachment: fixed">
     {% load menu_tags %}
 
+    <div id="user_menu">
+        {% user_menu %}
+    </div>
+
+    <div style="color:#FFFFFF">
+            Welcome {{user.first_name}} {{user.last_name}}!
+    </div>
+
     <div id="main_menu">
         {% main_menu %}
     </div>

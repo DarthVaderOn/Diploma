@@ -6,6 +6,14 @@
   </head>
   <body background="https://s2.best-wallpaper.net/wallpaper/3840x2160/1703/Strawberries-and-honey_3840x2160.jpg" style="background-attachment: fixed">
 
+  <div id="user_menu">
+          {% user_menu %}
+  </div>
+
+  <div style="color:black; font">
+          Welcome {{user.first_name}} {{user.last_name}}!
+  </div>
+
   <div id="main_menu">
         {% main_menu %}
   </div>

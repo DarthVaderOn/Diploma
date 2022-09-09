@@ -31,7 +31,7 @@ class PostAdmin(admin.ModelAdmin):
     inlines = (
         MenuItemAdmin,
     )
-    list_display = ('id', 'title', 'user', 'tag', 'created_at', 'is_public')
+    list_display = ('id', 'title', 'user', 'tag', 'created_at', 'is_public',)
     ordering = ('-created_at', 'id',)
     readonly_fields = ('created_at',)
     list_editable = ('is_public', 'tag', 'user',)

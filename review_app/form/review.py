@@ -6,7 +6,7 @@ class ReviewForm(forms.ModelForm):
     """Класс формы отзывов"""
     class Meta:
         model = Review
-        fields = ["text", "post", "user"]
+        fields = ["text",]
         widgets = {
             "text": forms.TextInput(),
             "user": forms.HiddenInput(),

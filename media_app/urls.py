@@ -1,12 +1,12 @@
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib import admin
+from media_app.api.views.router import api_router
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path
+from django.urls import path, include
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/', include(api_router.urls)),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -5,6 +5,14 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
+def func(apps, schema_editor):
+    Menu = apps.get_model('menu_app', 'Menu')
+    MenuItem = apps.get_model('menu_app', 'MenuItem')
+
+    menu = Menu.objects.create(menu_label="main_menu")
+    MenuItem.objects.create(menu=menu)
+
+
 class Migration(migrations.Migration):
 
     initial = True
@@ -43,4 +51,5 @@ class Migration(migrations.Migration):
             name='menuitem',
             unique_together={('menu', 'title')},
         ),
+        migrations.RunPython(func),
     ]

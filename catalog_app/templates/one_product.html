@@ -16,11 +16,9 @@
              <h3 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFFFF">{{ one_product.title }}</h3>
     <div>
         {% for image in image_post %}
-        {% if image.post == one_product %}
             <a href="{{image.image_post.url}}" >
 {% if image.image_post %}
             <img src="{{ image.image_post.url }}" target="_blank" alt="" width="" height="600px">
-        {% endif %}
         {% endif %}
         {% endfor %}
             </a>
@@ -33,26 +31,45 @@
     <div class="card-footer text-muted" style="color:#FFFFFF">
         {{ one_product.created_at|date:"d/m/Y  H:i"}}
     </div>
-      {% for review in reviews %}
-    <div class="review">
-        <p class="info">
-            Review {{ forloop.counter }} by {{ review.user }}
-            {{ review.created_at }}
-        </p>
-        {{ review.body|linebreaks }}
-    </div>
-{% empty %}
-    <p>There are no reviews yet.</p>
-{% endfor %}
-  {% if new_review %}
-    <h2>Your review has been added.</h2>
-{% else %}
-    <h2>Add a new review</h2>
-    <form action="." method="post">
-        {{ review_form.as_p }}
+<hr>
+
+        <form class="" action="" method="post" enctype="multipart/form-data" style="color:#FFFFFF">
+
+        {% if error %}
+            <h4 style="color:#DC143C">{{ error }}</h4>
+        {% endif %}
+
         {% csrf_token %}
-        <p><input type="submit" value="Add review"></p>
-    </form>
-{% endif %}
+
+        {% for field in form %}
+
+        <div class="form-group">
+            {% if field.errors %}
+            <div class="alert alert-danger">
+                {{ field.errors }}
+            </div>
+                {% endif %}
+                {{ field.label }}
+                {{ field }}
+        </div>
+
+            {% endfor %}
+
+        <button type="submit" name="button">Post</button>
+        </form>
+     <div>
+        {% for review in reviews %}
+         {% for image in review.image.all %}
+         {% if image.image_review %}
+                <img src="{{ image.image_review.url }}" target="_blank" alt="" width="" height="600px">
+         {% endif %}
+         {% endfor %}
+        <p class="card-text" style="color:#FFFFFF" >{{ review.text }}</p>
+        <h3 class="text-bold" style="color:#FF8C00"> <b>{{ review.user }}</b> </h3>
+    <div class="card-footer text-muted" style="color:#FFFFFF">
+        {{ review.created_at|date:"d/m/Y  H:i"}}
+    {% endfor %}
+    </div>
+    </div>
     </body>
 </html>
