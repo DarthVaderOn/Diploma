@@ -2,6 +2,14 @@
   <body background="https://s2.best-wallpaper.net/wallpaper/2880x1800/2008/Honey-jar-flowers-sweet_2880x1800.jpg" style="background-attachment: fixed">
     {% load menu_tags %}
 
+    <div id="user_menu">
+        {% user_menu %}
+    </div>
+
+    <div style="color:#FFFFFF">
+        Welcome {{user.first_name}} {{user.last_name}}!
+    </div>
+
     <div id="main_menu">
         {% main_menu %}
     </div>
@@ -13,30 +21,26 @@
     {% endblock %}
 
     <div class="card-body">
-             <h3 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFFFF">{{ one_product.title }}</h3>
-    <div>
+             <h2 class="card-title {% cycle 'text-danger' 'text-success'%}" style="color:#FFFF00">{{ one_product.title }}</h2>
+    <div style="text-align: left;">
         {% for image in image_post %}
-            <a href="{{image.image_post.url}}" >
-{% if image.image_post %}
+            <a href="{{image.image_post.url}}">
+        {% if image.image_post %}
             <img src="{{ image.image_post.url }}" target="_blank" alt="" width="" height="600px">
         {% endif %}
         {% endfor %}
             </a>
     </div>
-
+        <h3 class="card-text" style="color:#2F4F4F" ><b>{{ one_product.text }}</b></h3>
+        <h1 class="text-bold" style="color:#7B68EE"> {{ one_product.price }} BYR </h1>
+        <h2 class="text-bold" style="color:#FF8C00"> <b>{{ one_product.user }}</b> </h2>
+        <h4 class="card-footer text-muted" style="color:#000000"><b>{{ one_product.created_at|date:"d/m/Y  H:i"}}</b></h4>
     </div>
-        <p class="card-text" style="color:#FFFFFF" >{{ one_product.text }}</p>
-        <h1 class="text-bold" style="color:#FFFFFF"> <b>{{ one_product.price }} BYR</b> </h1>
-        <h3 class="text-bold" style="color:#FF8C00"> <b>{{ one_product.user }}</b> </h3>
-    <div class="card-footer text-muted" style="color:#FFFFFF">
-        {{ one_product.created_at|date:"d/m/Y  H:i"}}
-    </div>
-<hr>
-
+  <hr>
         <form class="" action="" method="post" enctype="multipart/form-data" style="color:#FFFFFF">
 
         {% if error %}
-            <h4 style="color:#DC143C">{{ error }}</h4>
+            <h3 style="color:#DC143C">{{ error }}</h3>
         {% endif %}
 
         {% csrf_token %}
@@ -57,19 +61,18 @@
 
         <button type="submit" name="button">Post</button>
         </form>
-     <div>
+
+     <div style="text-align: right">
         {% for review in reviews %}
          {% for image in review.image.all %}
          {% if image.image_review %}
-                <img src="{{ image.image_review.url }}" target="_blank" alt="" width="" height="600px">
+                <img src="{{ image.image_review.url }}" target="_blank" alt="" width="" height="200px">
          {% endif %}
          {% endfor %}
-        <p class="card-text" style="color:#FFFFFF" >{{ review.text }}</p>
-        <h3 class="text-bold" style="color:#FF8C00"> <b>{{ review.user }}</b> </h3>
-    <div class="card-footer text-muted" style="color:#FFFFFF">
-        {{ review.created_at|date:"d/m/Y  H:i"}}
+        <h4 class="card-text" style="color:#2F4F4F" > <b>{{ review.text }}</b> </h4>
+        <h5 class="text-bold" style="color:#FF0000"> <b>{{ review.user }}</b> </h5>
+        <h5 class="text-bold" style="color:#000000"> <b>{{ review.created_at|date:"d/m/Y  H:i"}}</b> </h5>
     {% endfor %}
-    </div>
     </div>
     </body>
 </html>
