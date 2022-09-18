@@ -31,12 +31,29 @@
         {% endfor %}
             </a>
     </div>
-        <h3 class="card-text" style="color:#2F4F4F" ><b>{{ one_product.text }}</b></h3>
-        <h1 class="text-bold" style="color:#7B68EE"> {{ one_product.price }} BYR </h1>
+        <h2 class="text-bold" style="color:#7B68EE"> <b>Year: <i style="color:#FFFFFF">{{ one_product.year }}</i></b> </h2>
+        <h2 class="text-bold" style="color:#7B68EE"> <b>Country: <i style="color:#FFFFFF">{{ one_product.country }}</i></b> </h2>
+        <h3 class="card-text" style="color:#7B68EE" ><b>Product Description:<br> <i style="color:#FFFFFF">{{ one_product.text|safe }}</i></b></h3>
+        <h1 class="text-bold" style="color:#7B68EE">Honey Cost: <i style="color:#FFFFFF">{{ one_product.price }} BYR</i></h1>
         <h2 class="text-bold" style="color:#FF8C00"> <b>{{ one_product.user }}</b> </h2>
         <h4 class="card-footer text-muted" style="color:#000000"><b>{{ one_product.created_at|date:"d/m/Y  H:i"}}</b></h4>
     </div>
+
+  <br>
+
+    <button>
+        {% csrf_token %}
+        <a href="{% url 'add_to_favorites' post_id" button type="button" class="btn btn-danger">Add To Favorites</a>
+    </button>
+
+
+    <button>
+        {% csrf_token %}
+        <a href="#" button type="button" class="btn btn-danger">Remove From Favorites</a>
+    </button>
+
   <hr>
+      <br>
         <form class="" action="" method="post" enctype="multipart/form-data" style="color:#FFFFFF">
 
         {% if error %}
@@ -63,7 +80,7 @@
         </form>
 
      <div style="text-align: right">
-        {% for review in reviews %}
+         {% for review in reviews %}
          {% for image in review.image.all %}
          {% if image.image_review %}
                 <img src="{{ image.image_review.url }}" target="_blank" alt="" width="" height="200px">
@@ -71,6 +88,7 @@
          {% endfor %}
         <h4 class="card-text" style="color:#2F4F4F" > <b>{{ review.text }}</b> </h4>
         <h5 class="text-bold" style="color:#FF0000"> <b>{{ review.user }}</b> </h5>
+        <h5 class="text-bold" style="color:#FF0000"> <b>{{ review.rating }}</b> </h5>
         <h5 class="text-bold" style="color:#000000"> <b>{{ review.created_at|date:"d/m/Y  H:i"}}</b> </h5>
     {% endfor %}
     </div>

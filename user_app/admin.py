@@ -20,6 +20,7 @@ class UserAdmin(UserAdminBase):
     )
 
     list_display = ('id', 'username', 'email', 'first_name', 'last_name', 'is_staff')
-    list_filter = ("is_staff", "is_superuser", "is_active", "groups")
-    search_fields = ("username", "first_name", "last_name", "email")
-    ordering = ("username",)
+    list_display_links = ('id', 'username', 'email',)
+    list_filter = ('username', 'is_staff', 'is_superuser', 'is_active', 'groups')
+    search_fields = ('username', 'first_name', 'last_name', 'email')
+    ordering = ('username',)

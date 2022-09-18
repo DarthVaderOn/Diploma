@@ -31,7 +31,7 @@ class RegistrationView(View):
             user=reg_form.save()
             send_email_task()                             # sending letter
             send_mail('Welcome New User!',
-                'We are glad that you are with us!',
+                'Welcome to the sweetest site!\n\n\n- Post ads or browse the product catalog.\n- Add the products you like to your favorites, as well as leave your feedback about the product.\n\n\nWe are glad that you are with us!',
                 str(os.getenv('EMAIL_HOST_USER')),        # Enter your email address
                 [user.email])                             # Enter them email address
             login(request, user)

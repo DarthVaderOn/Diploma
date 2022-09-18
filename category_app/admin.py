@@ -9,6 +9,7 @@ from category_app.models import Tag
 class Tag(admin.ModelAdmin):
     """Вывод полей тегов в админке"""
     list_display = ('id', 'title',)
+    list_filter = ('id', 'title',)
     ordering = ('id', 'title',)
     list_display_links = ('id', 'title',)
     search_fields = ('title',)

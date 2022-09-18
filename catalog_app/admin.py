@@ -1,3 +1,5 @@
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django import forms
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from catalog_app.models import Media, Post
@@ -6,11 +8,19 @@ from catalog_app.models import Media, Post
 # Register your models here.
 
 
-class MenuItemAdmin(admin.StackedInline):
+class PostAdminForm(forms.ModelForm):
+    text = forms.CharField(label="Description", widget=CKEditorUploadingWidget())
+    class Meta:
+        model = Post
+        fields = '__all__'
+
+
+class MediaProductAdmin(admin.StackedInline):
     """Вывод изображений постов в админке"""
     model = Media
     list_display = ('image_post','preview')
     readonly_fields = ('image_post','preview')
+    extra = 1
 
 
     def preview(self, obj):
@@ -29,10 +39,14 @@ class MenuItemAdmin(admin.StackedInline):
 class PostAdmin(admin.ModelAdmin):
     """Вывод постов с изображениями"""
     inlines = (
-        MenuItemAdmin,
+        MediaProductAdmin,
     )
     list_display = ('id', 'title', 'user', 'tag', 'created_at', 'is_public',)
+    list_display_links = ('title',)
+    list_filter = ('id', 'user', 'tag', 'created_at', 'is_public',)
     ordering = ('-created_at', 'id',)
     readonly_fields = ('created_at',)
     list_editable = ('is_public', 'tag', 'user',)
     search_fields = ('title', 'text', 'user__username')
+    form = PostAdminForm
+    save_on_top = True

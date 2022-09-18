@@ -1,13 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
+from datetime import datetime
 from catalog_app.models import Post, Media
-from review_app.form.review import AddImageReview
+from review_app.forms.review import AddImageReview
 from review_app.models import MediaReview, Review
 
 
 class ProductView(View):
-    """Полное описание товара"""
+    """Полное описание товара и отзывов к нему"""
     def get(self, request, pk):
+        post = get_object_or_404(Post, id=pk)
+        post.last_visit = datetime.now()
+        post.save()
         one_product = Post.objects.get(id=pk)
         image_post = Media.objects.filter(post=one_product)
         review = Review.objects.order_by("-created_at").filter(post=one_product)

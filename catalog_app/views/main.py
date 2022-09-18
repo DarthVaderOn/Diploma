@@ -1,47 +1,49 @@
+from django.core.paginator import Paginator
 from django.db.models import Count
 from django.shortcuts import render
 from django.views import View
-from favorites_app.models import FollowRequest
+from favorites_app.models import FavoriteProduct
 from catalog_app.models import Media
 from catalog_app.models import Post
 from category_app.models import Tag
 
 
 class MainPageView(View):
-    """Класс представление главной страницы"""
+    """Главная страница"""
 
     def get(self, request):
-        """Представление постов"""
+        """Представление избранных товаров"""
 
-        subscriber = FollowRequest.objects.filter(user=request.user.pk)
+        basket = FavoriteProduct.objects.filter(user=request.user.pk)
 
-        users_follow = []
+        favorite_product = []
 
-        for users in subscriber:
+        for post in basket:
 
-            if users.user_follow.pk not in users_follow:
-                users_follow.append(users.user_follow.pk)
+            if post.favorite_product.pk not in favorite_product:
+                favorite_product.append(post.favorite_product.pk)
 
-        if subscriber:
+        if basket:
 
-            posts = Post.objects.filter(is_public=True).filter(user_id__in=users_follow).all()
+            posts = Post.objects.filter(is_public=True).filter(id__in=favorite_product).all()
+            paginator = Paginator(posts, 3)
+            page_number = request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
 
             if posts:
 
                 tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
                 image_post = Media.objects.all()
-                contex = {'title': 'Hello World!',
-                          'posts': posts,
+                contex =  {'posts': posts,
                           'image_post': image_post,
                           'tag': tag,
+                          'page_obj': page_obj,
                           }
             else:
-                contex = {'title': 'Hello World!',
-                          'error': "Oops, this item may have been removed =/",
+                contex = {'error': "Oops, this item may have been removed =/",
                           }
         else:
-            contex = {'title': 'Hello World!',
-                      'error': "Oops. You don't have favorite items. Time to change that :)",
+            contex = {'error': "Oops. You don't have favorite items. Time to change that :)",
                       }
 
         return render(request, 'main_page.html', contex)
@@ -51,6 +53,9 @@ class MainPageView(View):
         """Представление тегов"""
 
         posts = Post.objects.filter(tag__title=title).order_by('-id').all()
+        paginator = Paginator(posts, 2)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
         tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
         image_post = Media.objects.all()
         tags = Tag.objects.get(title=title)
@@ -60,4 +65,5 @@ class MainPageView(View):
             'image_post': image_post,
             'tag': tag,
             'tags': tags,
+            'page_obj': page_obj,
         })

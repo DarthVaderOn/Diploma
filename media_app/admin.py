@@ -13,6 +13,8 @@ class MessengerAdmin(admin.ModelAdmin):
     """Вывод полей медиафайлов в админке"""
     model = Media
     list_display = ('id', 'user', 'file', 'uploaded_at', 'preview')
+    list_display_links = ('user', 'file',)
+    list_filter = ('id', 'user',)
     ordering = ('-id',)
     readonly_fields = ('preview', 'uploaded_at')
     search_fields = ('user__username', 'file')
