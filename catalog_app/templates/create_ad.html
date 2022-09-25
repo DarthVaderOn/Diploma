@@ -34,17 +34,16 @@
 
         <div class="form-group">
             {% if field.errors %}
-            <div class="alert alert-danger">
-                {{ field.errors }}
-            </div>
-                {% endif %}
-                {{ field.label }}
-                {{ field }}
+        <div class="alert alert-danger">
+            {{ field.errors }}
         </div>
-
+            {% endif %}
+            {{ field.label }}
+            {{ field }}
+        </div>
             {% endfor %}
 
         <button type="submit" name="button">Post</button>
         </form>
-        {% endblock %}
+            {% endblock %}
   </body>

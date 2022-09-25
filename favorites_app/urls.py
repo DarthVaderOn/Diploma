@@ -4,11 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
 from favorites_app.api.views.router import api_router
-from favorites_app.views.favorites import add_to_favorites
+from favorites_app.views.favorites import add_to_favorites, delete_to_favorites
 
 
 urlpatterns = [
-    path('favorites/<int:post_id>', add_to_favorites, name='add_to_favorites'),
+    path('favorites/<int:post_id>', login_required(add_to_favorites), name='add_to_favorites'),
+    path('favorites_delete/<int:post_id>', login_required(delete_to_favorites), name='delete_to_favorites'),
     path('api/', include(api_router.urls)),
 ]
 

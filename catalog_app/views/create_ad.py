@@ -5,7 +5,7 @@ from catalog_app.models import Media
 
 
 class PostCreate(View):
-    """Класс создания постов"""
+    """Класс создания товаров"""
 
     def get(self, request):
         """Представление формы"""
@@ -37,6 +37,7 @@ class PostCreate(View):
             for f in files:
                 Media.objects.create(post=post_object,image_post=f)
             return redirect('catalog_page')
+
         return render(request, 'main_page.html', context={
             'title': 'Sell Goods',
             'form': bound_form

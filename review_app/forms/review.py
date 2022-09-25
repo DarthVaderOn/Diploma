@@ -6,15 +6,13 @@ class ReviewForm(forms.ModelForm):
     """Класс формы отзывов"""
     class Meta:
         model = Review
-        fields = ["rating", "text"]
+        fields = ["text","rating" ]
         widgets = {
+            "rating": forms.HiddenInput(),
             "text": forms.TextInput(),
             "user": forms.HiddenInput(),
             "post": forms.HiddenInput(),
-            'rating': forms.NumberInput(attrs={'class': 'Stars'})
-
         }
-        labels = {'rating': 'Enter Rating 1 to 5'}
 
 
 class AddImageReview(ReviewForm):

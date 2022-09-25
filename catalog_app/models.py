@@ -19,10 +19,9 @@ class Post(models.Model):
     year = models.PositiveIntegerField("Year", default=2022)
     country = models.CharField("Country", max_length=10)
     price = models.PositiveIntegerField("Price", default=0, help_text="Indicate the amount in Belarusian rubles")
-    last_visit = models.DateTimeField(blank=True, null=True)
 
 
 class Media(models.Model):
     """Модель изображений товаров"""
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="media_post")
     image_post = models.ImageField(null=False, blank=True)

@@ -33,7 +33,9 @@ class MainPageView(View):
             if posts:
 
                 tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
-                image_post = Media.objects.all()
+                image_post = []
+                for post in posts:
+                    image_post.append(Media.objects.filter(post=post).first)
                 contex =  {'posts': posts,
                           'image_post': image_post,
                           'tag': tag,
@@ -47,23 +49,3 @@ class MainPageView(View):
                       }
 
         return render(request, 'main_page.html', contex)
-
-
-    def get_tags(request, title):
-        """Представление тегов"""
-
-        posts = Post.objects.filter(tag__title=title).order_by('-id').all()
-        paginator = Paginator(posts, 2)
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        tag = Tag.objects.annotate(count=Count("post")).order_by("-count")[:5]
-        image_post = Media.objects.all()
-        tags = Tag.objects.get(title=title)
-        return render(request, 'category.html', {
-            'title': 'Categories',
-            'posts': posts,
-            'image_post': image_post,
-            'tag': tag,
-            'tags': tags,
-            'page_obj': page_obj,
-        })

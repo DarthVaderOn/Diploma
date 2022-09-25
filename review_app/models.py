@@ -14,7 +14,8 @@ class Review(models.Model):
     file = models.ForeignKey(MediaFile, on_delete=models.SET_NULL, null=True, blank=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=False, blank=False, related_name='reviews')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False, related_name='reviews')
-    rating = models.IntegerField(default=0)
+    rating = models.IntegerField(default=1)
+    ip = models.CharField(max_length=50, blank=True)
 
 
 class MediaReview(models.Model):

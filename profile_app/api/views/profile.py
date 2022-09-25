@@ -4,8 +4,6 @@ from rest_framework.viewsets import GenericViewSet
 from profile_app.api.serializers.profile import ProfileSerializer
 from rest_framework import filters, permissions
 
-from user_app.models import User
-
 
 class ProfileView(GenericViewSet, ListModelMixin, RetrieveModelMixin):
     """Создаём класс вьюсет профиля"""

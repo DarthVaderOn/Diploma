@@ -7,7 +7,6 @@ from catalog_app.models import Media
 # Register your models here.
 
 
-
 @admin.register(MediaFile)
 class MessengerAdmin(admin.ModelAdmin):
     """Вывод полей медиафайлов в админке"""

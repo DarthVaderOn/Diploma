@@ -6,6 +6,7 @@ from ...models import User
 
 
 class UserViewSet(GenericViewSet, RetrieveModelMixin, ListModelMixin):
+    """Вьюсет User"""
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = [permissions.IsAuthenticated]

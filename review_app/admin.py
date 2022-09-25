@@ -31,7 +31,7 @@ class ReviewAdmin(admin.ModelAdmin):
     inlines = (
         MediaReviewAdmin,
     )
-    list_display = ('text', 'user', 'post', 'created_at',)
+    list_display = ('text', 'user', 'post', 'created_at', 'rating', 'ip',)
     list_display_links = ('text', 'user',)
     list_filter = ('user', 'post', 'created_at',)
     search_fields = ('user', 'text', 'post')
