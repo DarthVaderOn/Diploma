@@ -6,11 +6,12 @@ class PostForm(forms.ModelForm):
     """Класс формы постов"""
     class Meta:
         model = Post
-        fields = ['title', 'text', 'is_public','tag', 'year', 'price', 'country']
+        fields = ['title', 'text', 'tag', 'year', 'price', 'country', 'is_public',]
         widget = {
             'title': forms.TextInput(),
             'text': forms.TextInput(),
             'is_public': forms.BooleanField(initial=True),
+            'price': forms.TextInput(),
         }
 
 

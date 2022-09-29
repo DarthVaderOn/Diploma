@@ -1,39 +1,16 @@
-{% load menu_tags %}
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Edit profile</title>
-  </head>
-  <body background="https://s2.best-wallpaper.net/wallpaper/3840x2160/1703/Strawberries-and-honey_3840x2160.jpg" style="background-attachment: fixed">
-
-  <div id="user_menu">
-          {% user_menu %}
-  </div>
-
-  <div style="color:black; font">
-          Welcome {{user.first_name}} {{user.last_name}}!
-  </div>
-
-  <div id="main_menu">
-        {% main_menu %}
-  </div>
-
-    <h1 style="color:#8B4513">Editing profile data {{ user.username }}</h1>
-
-    <p style="color:#FFD700">Your data:</p>
-
-  <form method="post" enctype="multipart/form-data" style="color:#FFD700">
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
-    {% if user.avatar %}
-
-  <div>
-      <img src="{{ user.avatar.url }}" alt="" width="100px" height="100px">
-  </div>{% endif %}
-
-    {% csrf_token %}
-
-    <p><input type="submit" value="Save"></p>
-  </form>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Edit Profile{% endblock title %}
+{% block header %} bg3 {% endblock header %}
+{% block content %}
+    <h1 class="left-ads-display col-lg-3" style="color:#8B4513">Editing profile data {{ user.username }}</h1>
+        <form class="left-ads-display col-lg-9" method="post" enctype="multipart/form-data" style="color:#FFD700">
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            {% if user.avatar %}
+                <div>
+                    <img src="{{ user.avatar.url }}" alt="" width="100px" height="100px">
+                </div>{% endif %}
+            {% csrf_token %}
+            <p><input type="submit" value="Save"></p>
+        </form>
+{% endblock content %}

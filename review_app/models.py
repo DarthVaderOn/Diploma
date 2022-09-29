@@ -18,6 +18,11 @@ class Review(models.Model):
     ip = models.CharField(max_length=50, blank=True)
 
 
+    class Meta:
+        """Создаём уникальные поля"""
+        unique_together = (('user', 'post',),)
+
+
 class MediaReview(models.Model):
     """Модель изображений отзывов"""
     review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name="image")

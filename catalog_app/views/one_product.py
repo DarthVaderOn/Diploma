@@ -11,17 +11,17 @@ class ProductView(View):
     def get(self, request, pk):
         one_product = Post.objects.get(id=pk)
         image_post = Media.objects.filter(post=one_product)
-        reviews = Review.objects.order_by("-created_at").filter(post=one_product)
+        reviews = Review.objects.order_by("-created_at").filter(post=one_product).all()
 
-        paginator = Paginator(reviews, 5)
+        paginator = Paginator(reviews, 2)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
         rating = 0
         for review in reviews:
-            rating+=review.rating
-        if rating>0:
-            rating = rating/len(reviews)
+            rating += review.rating
+        if rating > 0:
+            rating = round(rating/len(reviews), 1)
 
         form = AddImageReview()
 
@@ -59,6 +59,22 @@ class ProductView(View):
         one_product = Post.objects.get(id=pk)
         image_post = Media.objects.filter(post=one_product)
         reviews = Review.objects.order_by("-created_at").filter(post=one_product)
+
+        rating = 0
+        for review in reviews:
+            rating += review.rating
+        if rating > 0:
+            rating = round(rating / len(reviews), 1)
+
+        if Review.objects.filter(post=one_product).filter(user=request.user).exists():
+            return render(request, 'one_product.html', context={
+                'one_product': one_product,
+                'image_post': image_post,
+                'reviews': reviews,
+                "rating": rating,
+                'form': form,
+                'error': 'You you have left a review before!'
+            })
 
         if len(files) > 5:
             return render(request, 'one_product.html', context={

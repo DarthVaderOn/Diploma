@@ -25,7 +25,7 @@ class MainPageView(View):
 
         if basket:
 
-            posts = Post.objects.filter(is_public=True).filter(id__in=favorite_product).all()
+            posts = Post.objects.filter(is_public=True).filter(id__in=favorite_product).order_by('-created_at').all()
             paginator = Paginator(posts, 3)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)

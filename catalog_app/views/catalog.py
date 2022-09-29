@@ -5,7 +5,6 @@ from django.views import View
 from catalog_app.models import Media
 from catalog_app.models import Post
 from category_app.models import Tag
-from review_app.models import Review
 
 
 class CatalogPageView(View):
@@ -18,7 +17,7 @@ class CatalogPageView(View):
 
         paginator = Paginator(posts, 5)
         page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number )
+        page_obj = paginator.get_page(page_number)
 
         if posts:
 

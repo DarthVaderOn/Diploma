@@ -1,73 +1,53 @@
-    {% load menu_tags %}
-<html lang="en">
-
-  <head>
-
-    <meta charset="UTF-8">
-
-    <title>{% block title %}Welcome!{% endblock %}</title>
-
-  </head>
-
-  <body background="https://s2.best-wallpaper.net/wallpaper/2560x1600/2204/Jar-honey-green-background_2560x1600.jpg" style="background-attachment: fixed">
-
-    <div id="user_menu">
-        {% user_menu %}
-    </div>
-
-    <div style="color:#FFFFFF">
+<!DOCTYPE html>
+{% load static %}
+{% load menu_tags %}
+<html lang="eu">
+<head>
+    <!-- //Meta tag Keywords -->
+    <title>{% block title %}{% endblock title %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- //Meta tag Keywords -->
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Bootstrap-Core-CSS -->
+    <!--/ Style-CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+    <!--// Style-CSS -->
+    <!-- font-awesome-icons -->
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+  <!-- /Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+    <!-- //Fonts -->
+</head>
+<body>
+<div id="page" class="page">
+     <div class="main-banner bg {% block header %} {% endblock header %}" id="home">
+        {% include 'include/header.html' %}
+     </div>
+        <ol class="breadcrumb editContent">
+            <li class="breadcrumb-item">
+                <a href="http://127.0.0.1:8000/" class="editContent">Home</a>
+            </li>
+        </ol>
+    <div class="left-ads-display col-lg-9" id="user_menu">
+    {% user_menu %}
+</div>
+    <div class="left-ads-display col-lg-9" style="color:#000000">
         Welcome {{user.first_name}} {{user.last_name}}!
     </div>
+        <div class="left-ads-display col-lg-9" id="main_menu">
+            {% main_menu %}
+        </div>
 
-    <div id="main_menu">
-        {% main_menu %}
-    </div>
+{% block content %}
 
-<h3 style="color:#FFFFFF">Most Wanted Categories:</h3>
+{% endblock content %}
 
-    <div class="row" >
-        {% for item in tag %}
-            <a href="/tag/{{ item.title }}" class="list-group-item list-group-item-action" style="color: #00CED1">{{ item.title }}<span class="badge badge-primary badge-pill" > [{{ item.count }}]</span></a>
-        {% endfor %}
-    </div>
+{% include 'include/footer.html' %}
 
-        {% if error %}
-            <h3 style="color:#FFFFFF">{{ error }}</h3>
-        {% else %}
-        {% for post in page_obj %}
-             <h4 style="color:#FFFFFF">tag: <a href="{% url 'get_tags' post.tag.title %}" style="color: #00CED1">{{ post.tag.title }}</a></h4>
-
-    <div class="card-body">
-        <h2>
-             <a href="http://127.0.0.1:8000/catalog/{{ post.id }}" class="list-group-item list-group-item-action" style="color:#FFFF00">{{ post.title }}</a>
-        </h2>
-    <div style="text-align: left;">
-        {% for image in image_post %}
-        {% if image.post == post %}
-            <a href="http://127.0.0.1:8000/catalog/{{ post.id }}" >
-            <img src="{{ image.image_post.url }}" target="_blank" alt="" width="" height="600px">
-            </a>
-        {% endif %}
-        {% endfor %}
-
-        <h1 class="text-bold" style="color:#FFFFFF"> <b>{{ post.price }} BYR</b> </h1>
-        <h2 class="card-text" style="color:#FF8C00" >{{ post.user }}</h2>
-        <h4 class="card-footer text-muted" style="color:#000000"><b>{{ post.created_at|date:"d/m/Y  H:i"}}</b></h4>
-    </div>
-    </div>
-<hr>
-        {% empty %}
-            <h3 style="color:#FFFFFF">Oops. Oh no, we don't have any products yet. But you can create your own</h3>
-        {% endfor %}
-        {% endif %}
-<nav>
-    <ul>
-        {% for p in page_obj.paginator.page_range %}
-        <li>
-            <a href="?page={{p}}">{{p}}</a>
-        </li>
-        {% endfor %}
-    </ul>
-</nav>
-  </body>
+</div>
+</body>
 </html>

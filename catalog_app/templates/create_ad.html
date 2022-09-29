@@ -1,49 +1,26 @@
-  <body background="https://s2.best-wallpaper.net/wallpaper/2880x1800/2108/Cocktail-peanuts-honey-cocoa-milk-drinks_2880x1800.jpg" style="background-attachment: fixed">
-    {% load menu_tags %}
-
-    <div id="user_menu">
-        {% user_menu %}
-    </div>
-
-    <div style="color:#FFFFFF">
-            Welcome {{user.first_name}} {{user.last_name}}!
-    </div>
-
-    <div id="main_menu">
-        {% main_menu %}
-    </div>
-
-    {% block title %}
-
-    <title>{{ title }}</title>
-
-    <h2 style="color:#FFFFFF">Create Goods</h2>
-
-    {% endblock %}
-
-    {% block content %}
-        <form class="" action="{% url 'post_page' %}" method="post" enctype="multipart/form-data" style="color:#FFFFFF">
-
-        {% if error %}
-            <h4 style="color:#DC143C">{{ error }}</h4>
-        {% endif %}
-
-        {% csrf_token %}
-
-        {% for field in form %}
-
-        <div class="form-group">
-            {% if field.errors %}
-        <div class="alert alert-danger">
-            {{ field.errors }}
-        </div>
-            {% endif %}
-            {{ field.label }}
-            {{ field }}
-        </div>
-            {% endfor %}
-
-        <button type="submit" name="button">Post</button>
+{% extends 'base.html' %}
+{% block title %}Create Ad{% endblock title %}
+{% block header %} bg4 {% endblock header %}
+{% block content %}
+    <h2 class="left-ads-display col-lg-3" style="color:#8B4513">Create Goods</h2>
+        <form class="left-ads-display col-lg-9" action="{% url 'post_page' %}" method="post" enctype="multipart/form-data" style="color:#000000">
+            {% if error %}
+                <h4 class="left-ads-display col-lg-9" style="color:#DC143C">
+                    {{ error }}
+                </h4>
+                    {% endif %}
+                        {% csrf_token %}
+                            {% for field in form %}
+                                <div class="form-group">
+                                    {% if field.errors %}
+                                        <div class="alert alert-danger">
+                                            {{ field.errors }}
+                                        </div>
+                                    {% endif %}
+                                    {{ field.label }}
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+                        <button type="submit" name="button">Post</button>
         </form>
-            {% endblock %}
-  </body>
+{% endblock content %}
