@@ -15,6 +15,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from datetime import timedelta
+import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -326,3 +327,9 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+
+# Heroku
+
+
+django_heroku.settings(locals())
