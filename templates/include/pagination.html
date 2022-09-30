@@ -1,0 +1,11 @@
+<div>
+<nav>
+    <ul class="pagination">
+        {% for p in page_obj.paginator.page_range %}
+            <li class="pagination__item">
+                <a href="?page={{p}}">{{p}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+</div>

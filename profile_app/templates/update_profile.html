@@ -2,15 +2,17 @@
 {% block title %}Edit Profile{% endblock title %}
 {% block header %} bg3 {% endblock header %}
 {% block content %}
-    <h1 class="left-ads-display col-lg-3" style="color:#8B4513">Editing profile data {{ user.username }}</h1>
-        <form class="left-ads-display col-lg-9" method="post" enctype="multipart/form-data" style="color:#FFD700">
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            {% if user.avatar %}
-                <div>
-                    <img src="{{ user.avatar.url }}" alt="" width="100px" height="100px">
-                </div>{% endif %}
-            {% csrf_token %}
-            <p><input type="submit" value="Save"></p>
-        </form>
+    <br>
+        <h1 class="left-ads-display col-lg-3" style="color:#8B4513">Editing profile data {{ user.username }}</h1>
+            <br>
+                <form class="left-ads-display col-lg-9" method="post" enctype="multipart/form-data" style="color:#FFD700">
+                    {{ user_form.as_p }}
+                    {{ profile_form.as_p }}
+                    {% if user.avatar %}
+                        <div>
+                            <img src="{{ user.avatar.url }}" alt="" width="100px" height="100px">
+                        </div>{% endif %}
+                    {% csrf_token %}
+                    <p><input type="submit" value="Save"></p>
+                </form>
 {% endblock content %}

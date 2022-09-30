@@ -12,87 +12,82 @@
                     {% endif %}
             {% endfor %}
         </div>
-            <h4 class="text-bold" style="color:#7B68EE"> <b>Year: <i style="color:#8B4513">{{ one_product.year }}</i></b> </h4>
-            <h4 class="text-bold" style="color:#7B68EE"> <b>Country: <i style="color:#8B4513">{{ one_product.country }}</i></b> </h4>
-            <h4 class="card-text" style="color:#7B68EE" ><b>Product Description:<br> <i style="color:#C0C0C0">{{ one_product.text|safe }}</i></b></h4>
-            <h2 class="text-bold" style="color:#7B68EE"><b>Honey Cost: <i style="color:#000000">{{ one_product.price }} BYR</i></b></h2>
-            <h2 class="text-bold" style="color:#7B68EE"><b>Rating: <i style="color:#FFD700">{{ rating }} stars</i></b></h2>
-            <h4 class="text-bold" style="color:#7B68EE">Author: <b><i style="color:#FF8C00">{{ one_product.user }}</i></b> </h4>
-            <h4 class="card-footer text-muted" style="color:#000000"><b>{{ one_product.created_at|date:"d/m/Y  H:i"}}</b></h4>
-                <br>
-                    <button>
-                        {% csrf_token %}
-                        <a href="{% url 'add_to_favorites' one_product.id %}" button type="button" class="btn btn-danger">Add To Favorites</a>
-                    </button>
-
-                    <button>
-                        {% csrf_token %}
-                        <a href="{% url 'delete_to_favorites' one_product.id %}" button type="button" class="btn btn-danger">Remove From Favorites</a>
-                    </button>
-    </div>
-        <br>
-            {% if recently_viewed_post %}
-                <h2 class="left-ads-display col-lg-9" style="color:#8B4513"><b>Recently Viewed</b></h2>
-                    <div class="left-ads-display col-lg-9">
-                        {% for recent_post in recently_viewed_post %}
-                        <a href="http://127.0.0.1:8000/catalog/{{ recent_post.post.id }}" >
-                        <img src="{{ recent_post.image_post.url }}" alt="" width="" height="150px"></a>
-                        {% endfor %}
-                    </div>
-            {% endif %}
-        <hr>
     <br>
-        <form class="left-ads-display col-lg-9" action="" method="post" enctype="multipart/form-data" style="color:#8B4513">
-            {% if error %}
-                <h3 class="left-ads-display col-lg-9" style="color:#DC143C">{{ error }}</h3>
-            {% endif %}
-                {% csrf_token %}
-                    {% for field in form %}
-                        <div class="form-group">
-                            {% if field.errors %}
-                                <div class="alert alert-danger">
-                                    {{ field.errors }}
-                                </div>
-                            {% endif %}
-                            {{ field.label }}
-                            {{ field }}
-                        </div>
+        <h4 class="text-bold" style="color:#7B68EE"> <b>Year: <i style="color:#8B4513">{{ one_product.year }}</i></b> </h4>
+        <h4 class="text-bold" style="color:#7B68EE"> <b>Country: <i style="color:#8B4513">{{ one_product.country }}</i></b> </h4>
+        <h4 class="card-text" style="color:#7B68EE" ><b>Product Description:<br> <i style="color:#C0C0C0">{{ one_product.text|safe }}</i></b></h4>
+        <h3 class="text-bold" style="color:#7B68EE"><b>Honey Cost: <i style="color:#000000">{{ one_product.price }} BYR</i></b></h3>
+        <h3 class="text-bold" style="color:#7B68EE"><b>Rating: <i style="color:#FFD700">{{ rating }} stars</i></b></h3>
+        <h5 class="text-bold" style="color:#7B68EE">Author: <b><i style="color:#FF8C00">{{ one_product.user }}</i></b> </h5>
+        <h4 class="card-footer text-muted" style="color:#000000"><b>{{ one_product.created_at|date:"d/m/Y  H:i"}}</b></h4>
+            <br>
+                <button>
+                    {% csrf_token %}
+                    <a href="{% url 'add_to_favorites' one_product.id %}" button type="button" class="btn btn-danger">Add To Favorites</a>
+                </button>
+
+                <button>
+                    {% csrf_token %}
+                    <a href="{% url 'delete_to_favorites' one_product.id %}" button type="button" class="btn btn-danger">Remove From Favorites</a>
+                </button>
+</div>
+    <br>
+        {% if recently_viewed_post %}
+            <h2 class="left-ads-display col-lg-9" style="color:#8B4513"><b>Recently Viewed</b></h2>
+                <div class="left-ads-display col-lg-9">
+                    {% for recent_post in recently_viewed_post %}
+                    <a href="http://127.0.0.1:8000/catalog/{{ recent_post.post.id }}" >
+                    <img src="{{ recent_post.image_post.url }}" alt="" width="" height="150px"></a>
                     {% endfor %}
-                        <div class="form-group">
-                            <div class="input-rating">
-                                <strong class="text-uppercase">You Rating</strong>
-                                <div class="rating">
-                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
-                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
-                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
-                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
-                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
-                                </div>
+                </div>
+        {% endif %}
+    <hr>
+<br>
+    <form class="left-ads-display col-lg-9" action="" method="post" enctype="multipart/form-data" style="color:#8B4513">
+        {% if error %}
+            <h3 class="left-ads-display col-lg-9" style="color:#DC143C">{{ error }}</h3>
+        {% endif %}
+            {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                        {{ field.label }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                    <div class="form-group">
+                        <div class="input-rating">
+                            <strong class="text-uppercase">You Rating</strong>
+                            <div class="rating">
+                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
                             </div>
                         </div>
-                    <button type="submit" name="button">Post</button>
-        </form>
-    <hr>
-         <div style="text-align: right">
-            {% for review in reviews %}
-            {% for image in review.image.all %}
-            {% if image.image_review %}
-                <img src="{{ image.image_review.url }}" target="_blank" alt="" width="" height="200px">
-            {% endif %}
-            {% endfor %}
-                <h4 class="card-text" style="color:#C0C0C0" > <b>{{ review.text }}</b> </h4>
-                <h5 class="text-bold" style="color:#FF8C00"> <b>{{ review.user }}</b> </h5>
-                <h5 class="text-bold" style="color:#FFD700"> <b>{{ review.rating }}</b> </h5>
-                <h5 class="card-footer text-muted" style="color:#000000"> <b>{{ review.created_at|date:"d/m/Y  H:i"}}</b> </h5>
-            {% endfor %}
-         </div>
-    <nav>
-        <ul>
-            {% for p in page_obj.paginator.page_range %}
-            <li>
-                <a href="?page={{p}}">{{p}}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </nav>
+                    </div>
+                <button type="submit" name="button">Post</button>
+    </form>
+<hr>
+     <div style="text-align: right">
+        {% for review in reviews %}
+        {% for image in review.image.all %}
+        {% if image.image_review %}
+            <img src="{{ image.image_review.url }}" target="_blank" alt="" width="" height="200px">
+        {% endif %}
+        {% endfor %}
+            <h4 class="card-text" style="color:#C0C0C0" > <b>{{ review.text }}</b> </h4>
+            <h5 class="text-bold" style="color:#FF8C00"> <b>{{ review.user }}</b> </h5>
+            <h5 class="text-bold" style="color:#FFD700"> <b>{{ review.rating }}</b> </h5>
+            <h5 class="card-footer text-muted" style="color:#000000"> <b>{{ review.created_at|date:"d/m/Y  H:i"}}</b> </h5>
+        {% for review in page_obj %}
+        {% endfor %}
+        {% endfor %}
+     </div>
+{% include 'include/pagination.html' %}
 {% endblock content %}
