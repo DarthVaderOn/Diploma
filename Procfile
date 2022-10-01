@@ -1,1 +1,1 @@
-web gunicorn Bee.wsgi:apllication --log-file -
+web: gunicorn Bee.wsgi
