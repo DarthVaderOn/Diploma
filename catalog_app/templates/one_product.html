@@ -24,8 +24,8 @@
                 <i class="fa fa-star{% if rating < 4 %}-o empty{% endif %} fa-2x" aria-hidden="true"></i>
                 <i class="fa fa-star{% if rating < 5 %}-o empty{% endif %} fa-2x" aria-hidden="true"></i>
 		</div>
-        <h5 class="text-bold" style="color:#7B68EE">Author: <b><i style="color:#FF8C00">{{ one_product.user }}</i></b> </h5>
-        <h4 class="card-footer text-muted" style="color:#000000"><b>{{ one_product.created_at|date:"d/m/Y  H:i"}}</b></h4>
+        <h5 class="card text-white bg-warning mb-3" style="max-width: 18rem;">Author: {{ one_product.user }}</h5>
+        <h4 class="card text-white bg-dark mb-3" style="max-width: 18rem;"><b>{{ one_product.created_at|date:"d/m/Y  H:i"}}</b></h4>
             <br>
                 <button>
                     {% csrf_token %}
@@ -52,6 +52,7 @@
     <form class="left-ads-display col-lg-9" action="" method="post" enctype="multipart/form-data" style="color:#8B4513">
         {% if error %}
             <h3 class="left-ads-display col-lg-9" style="color:#DC143C">{{ error }}</h3>
+                <br>
         {% endif %}
             {% csrf_token %}
                 {% for field in form %}

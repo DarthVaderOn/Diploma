@@ -73,7 +73,7 @@ class ProductView(View):
                 'reviews': reviews,
                 "rating": rating,
                 'form': form,
-                'error': 'You you have left a review before!'
+                'error': 'You have left a review before!'
             })
 
         if len(files) > 5:
