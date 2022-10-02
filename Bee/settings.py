@@ -117,6 +117,11 @@ DATABASES = {
     }
 }
 
+if "DATABASE_URL" in os.environ:
+    import dj_database_url
+
+    DATABASES = {"default": dj_database_url.config()}
+
 
 # Django allows you to override the default user model by providing a value for the
 # AUTH_USER_MODEL setting that references a custom model:
