@@ -16,6 +16,7 @@ import os
 from dotenv import load_dotenv
 from datetime import timedelta
 import django_heroku
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -116,11 +117,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-if "DATABASE_URL" in os.environ:
-    import dj_database_url
-
-    DATABASES = {"default": dj_database_url.config()}
 
 
 # Django allows you to override the default user model by providing a value for the
@@ -334,5 +330,7 @@ CKEDITOR_CONFIGS = {
 
 # Heroku
 
+if "DATABASE_URL" in os.environ:
+    DATABASES = {"default": dj_database_url.config()}
 
 django_heroku.settings(locals())
