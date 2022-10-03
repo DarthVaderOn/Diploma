@@ -26,7 +26,7 @@
                                                                 <div class="item-info-product">
                                                                     {% for image in image_post %}
                                                                     {% if image.post == post %}
-                                                                        <a href="https://bee-online-shop-app.herokuapp.com/catalog/{{ post.id }}" >
+                                                                        <a href="{% url 'product_single' pk=post.pk %}" >
                                                                             <img src="{{ image.image_post.url }}" class="img-fluid" target="_blank" alt="" width="500px" height="555px">
                                                                         </a>
                                                                     {% endif %}
