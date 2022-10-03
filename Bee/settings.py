@@ -16,7 +16,6 @@ import os
 from dotenv import load_dotenv
 from datetime import timedelta
 import django_heroku
-import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -113,8 +112,12 @@ WSGI_APPLICATION = 'Bee.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': str(os.getenv('DATABASES_NAME')),
+        'USER': str(os.getenv('DATABASES_USER')),
+        'PASSWORD': str(os.getenv('DATABASES_PASSWORD')),
+        'HOST': str(os.getenv('DATABASES_HOST')),
+        'PORT': str(os.getenv('DATABASES_PORT'))
     }
 }
 
@@ -161,9 +164,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [STATIC_DIR]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -330,7 +334,5 @@ CKEDITOR_CONFIGS = {
 
 # Heroku
 
-if "DATABASE_URL" in os.environ:
-    DATABASES = {"default": dj_database_url.config()}
 
 django_heroku.settings(locals())
