@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Registration</title>
-  </head>
-
-  <body background="https://s1.1zoom.ru/b6855/293/Pancake_Blueberries_Honey_Wood_planks_Plate_Fork_516336_3840x2160.jpg" style="background-attachment: fixed">
-
-  <a href="/authorization" style="color:#2F4F4F">Authorization</a>
-
-    <form method="post" action="/registration" style="color:#2F4F4Fs">
-          {% csrf_token %}
-          {{ reg_form }}
-          <input type="submit" value="Sign up">
-    </form>
-
-  </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Registration{% endblock title %}
+{% block header %} bg6 {% endblock header %}
+{% block content %}
+    <a class="left-ads-display col-lg-9" href="/authorization" style="color:#00CED1">Authorization</a>
+        <form class="left-ads-display col-lg-6" method="post" action="/registration" style="color:#2F4F4Fs">
+              {% csrf_token %}
+              {{ reg_form }}
+                  <input type="submit" value="Sign up">
+        </form>
+    <br/>
+{% endblock content %}
