@@ -42,7 +42,7 @@
             <h2 class="left-ads-display col-lg-9" style="color:#8B4513"><b>Recently Viewed</b></h2>
                 <div class="left-ads-display col-lg-9">
                     {% for recent_post in recently_viewed_post %}
-                    <a href="http://127.0.0.1:8000/catalog/{{ recent_post.post.id }}" >
+                    <a href="{% url 'product_single' pk=recent_post.post.id %}" >
                     <img src="{{ recent_post.image_post.url }}" alt="" width="" height="150px"></a>
                     {% endfor %}
                 </div>
