@@ -18,7 +18,7 @@ class PostForm(forms.ModelForm):
 class AddImagePost(PostForm):
     """Класс формы изображений к постам"""
     image = forms.ImageField(
-        required=False,
+        required=True,
         widget=forms.FileInput(attrs={'multiple': True})
     )
 
