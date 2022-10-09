@@ -17,10 +17,6 @@ def user_menu(context):
     if context.request.user.is_authenticated:
         menu = [
             {
-                'title': context.request.user.username,
-                'url': '/profile',
-            },
-            {
                 'title': 'Logout',
                 'url': reverse('logout_page'),
             },
@@ -28,12 +24,12 @@ def user_menu(context):
     else:
         menu = [
             {
-                'title': 'Authorization',
+                'title': 'Sign In',
                 'url': reverse('auth_page'),
 
             },
             {
-                'title': 'Registration',
+                'title': 'Sign Up',
                 'url': reverse('reg_page'),
             },
         ]
