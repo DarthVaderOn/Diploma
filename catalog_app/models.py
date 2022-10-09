@@ -20,6 +20,9 @@ class Post(models.Model):
     country = models.CharField("Country", max_length=10)
     price = models.PositiveIntegerField("Price", default=0, help_text="Indicate the amount in Belarusian rubles")
 
+    def __str__(self):
+        return self.title
+
 
 class Media(models.Model):
     """Модель изображений товаров"""
