@@ -84,7 +84,7 @@
 <hr>
 {% if reviews %}
     {% for reviews in page_obj %}
-        <div style="text-align: right">
+        <div class="right-ads-display col-12" style="text-align: right">
             {% for image in reviews.image.all %}
                 {% if image.image_review %}
                     <img src="{{ image.image_review.url }}" target="_blank" alt="" width="" height="200px">
