@@ -19,7 +19,7 @@ class Review(models.Model):
 
 
     class Meta:
-        """Создаём уникальные поля"""
+        """Создаём уникальные поля отзывов"""
         unique_together = (('user', 'post',),)
 
 

@@ -6,7 +6,7 @@ from rest_framework import filters, permissions
 
 
 class ProfileView(GenericViewSet, ListModelMixin, RetrieveModelMixin):
-    """Создаём класс вьюсет профиля"""
+    """Создаём класс вьюсет профиля пользователя"""
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
     filter_backends = [filters.OrderingFilter, filters.SearchFilter ]

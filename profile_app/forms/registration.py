@@ -12,6 +12,5 @@ class RegistrationForm(UserCreationForm):
     password2 = forms.CharField(min_length=8, widget=forms.PasswordInput(), label='Repeat password')
 
     class Meta:
-        """Вывод полей при регистрации"""
         model = User
         fields = ('username', 'email', 'password1', 'password2')

@@ -9,7 +9,8 @@ class Authorization(View):
 
     @staticmethod
     def get(request):
-        """Представление формы"""
+        """Представление формы авторизации"""
+
         if not request.user.is_authenticated:
             form = LoginForm()
             contex = {
@@ -22,7 +23,7 @@ class Authorization(View):
 
     @staticmethod
     def post(request):
-        """Сохранение формы"""
+        """Проверка данных на валидность при авторизации"""
 
         form = LoginForm(request.POST)
         error = False

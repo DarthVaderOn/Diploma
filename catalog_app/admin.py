@@ -16,7 +16,7 @@ class PostAdminForm(forms.ModelForm):
 
 
 class MediaProductAdmin(admin.StackedInline):
-    """Вывод изображений постов в админке"""
+    """Вывод изображений товаров в админке"""
     model = Media
     list_display = ('image_post','preview')
     readonly_fields = ('image_post','preview')
@@ -37,7 +37,7 @@ class MediaProductAdmin(admin.StackedInline):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    """Вывод постов с изображениями"""
+    """Вывод товаров с изображениями и настойки админки"""
     inlines = (
         MediaProductAdmin,
     )

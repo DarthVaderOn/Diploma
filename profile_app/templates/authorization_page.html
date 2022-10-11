@@ -12,9 +12,9 @@
                 </div>
             {% endif %}
                 <form class="left-ads-display col-lg-9" method="post" action="/authorization" style="color:#000000">
-                      {% csrf_token %}
-                      {{ auth_form }}
-                      <input type="submit" value="Sign in">
+                    {% csrf_token %}
+                        {{ auth_form }}
+                    <input type="submit" value="Sign in">
                 </form>
             <br/>
 {% endblock content %}

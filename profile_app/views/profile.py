@@ -7,7 +7,8 @@ class Profile_User(View):
     """Класс профайла"""
 
     def get(self, request):
-        """Представление формы"""
+        """Представление профайла пользователя"""
+
         user = Profile.objects.get(user=request.user)
         contex = {
             'title': 'Profile',

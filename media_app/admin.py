@@ -9,7 +9,7 @@ from catalog_app.models import Media
 
 @admin.register(MediaFile)
 class MessengerAdmin(admin.ModelAdmin):
-    """Вывод полей медиафайлов в админке"""
+    """Вывод полей медиафайлов и настойки админки"""
     model = Media
     list_display = ('id', 'user', 'file', 'uploaded_at', 'preview')
     list_display_links = ('user', 'file',)

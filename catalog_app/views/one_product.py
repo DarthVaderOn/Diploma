@@ -8,6 +8,7 @@ from review_app.models import MediaReview, Review
 
 class ProductView(View):
     """Полное описание товара и отзывов к нему, последние просмотренные товары """
+
     def get(self, request, pk):
         one_product = Post.objects.get(id=pk)
         image_post = Media.objects.filter(post=one_product)
@@ -54,6 +55,7 @@ class ProductView(View):
 
     def post(self, request, pk):
         """Добавление отзыва"""
+
         form = AddImageReview(request.POST, request.FILES)
         files = request.FILES.getlist('image')
         one_product = Post.objects.get(id=pk)

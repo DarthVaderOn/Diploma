@@ -5,7 +5,7 @@ from catalog_app.models import Post
 
 
 class CatalogSerializer(serializers.ModelSerializer):
-    """Создаем класс сериалайзер постов"""
+    """Создаем класс сериалайзер каталога"""
     class Meta:
         model = Post
         exclude = ['is_public']

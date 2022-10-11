@@ -11,19 +11,19 @@
                         <h4 class="left-ads-display col-lg-9" style="color:#DC143C">
                             {{ error }}
                         </h4>
-                            {% endif %}
-                                {% csrf_token %}
-                                    {% for field in form %}
-                                        <div class="form-group">
-                                            {% if field.errors %}
-                                                <div class="alert alert-danger">
-                                                    {{ field.errors }}
-                                                </div>
-                                            {% endif %}
-                                            {{ field.label }}
-                                            {{ field }}
+                    {% endif %}
+                        {% csrf_token %}
+                            {% for field in form %}
+                                <div class="form-group">
+                                    {% if field.errors %}
+                                        <div class="alert alert-danger">
+                                            {{ field.errors }}
                                         </div>
-                                    {% endfor %}
-                                <button type="submit" name="button">Post</button>
+                                    {% endif %}
+                                    {{ field.label }}
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+                        <button type="submit" name="button">Post</button>
                 </form>
 {% endblock content %}

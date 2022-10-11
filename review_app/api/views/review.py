@@ -5,9 +5,6 @@ from ..serializers.review import ReviewSerializer
 from ...models import Review
 
 
-# CRUD
-
-
 class ReviewViewSet(GenericViewSet, ListModelMixin, CreateModelMixin, DestroyModelMixin):
     """Создаём класс вьюсет отзывов"""
     serializer_class = ReviewSerializer

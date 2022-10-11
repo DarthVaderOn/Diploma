@@ -11,7 +11,8 @@ class RegistrationView(View):
     """Класс регистрации пользователя"""
 
     def get(self, request):
-        """Представление формы"""
+        """Представление формы регистрации"""
+
         if not request.user.is_authenticated:
             reg_form = RegistrationForm()
             contex = {
@@ -24,7 +25,8 @@ class RegistrationView(View):
 
 
     def post(self, request):
-        """Сохранение формы"""
+        """Сохранение формы регистрации"""
+
         reg_form = RegistrationForm(request.POST)
         if reg_form.is_valid():
             reg_form.save()

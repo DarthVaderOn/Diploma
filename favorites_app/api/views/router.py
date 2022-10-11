@@ -3,4 +3,4 @@ from .favorites import FavoriteProductViewSet
 
 
 api_router = routers.DefaultRouter()
-api_router.register('favorites_product', FavoriteProductViewSet)
+api_router.register('favorites product', FavoriteProductViewSet)

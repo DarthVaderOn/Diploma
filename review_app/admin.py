@@ -7,7 +7,7 @@ from review_app.models import Review, MediaReview
 
 
 class MediaReviewAdmin(admin.StackedInline):
-    """Вывод изображений постов в админке"""
+    """Вывод изображений отзывов в админке"""
     model = MediaReview
     list_display = ('image_review','preview')
     readonly_fields = ('image_review','preview')
@@ -28,6 +28,7 @@ class MediaReviewAdmin(admin.StackedInline):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
+    """Вывод отзывов с изображениями и настойки админки"""
     inlines = (
         MediaReviewAdmin,
     )

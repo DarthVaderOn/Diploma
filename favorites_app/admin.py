@@ -7,7 +7,7 @@ from favorites_app.models import FavoriteProduct
 
 @admin.register(FavoriteProduct)
 class FavoriteProductAdmin(admin.ModelAdmin):
-    """Вывод полей избранных в товаров"""
+    """Вывод полей избранных товаров и настойки админки"""
     list_display = ('user', 'favorite_product', 'created_at')
     list_display_links = ('user', )
     list_filter = ('user',)

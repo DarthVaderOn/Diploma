@@ -7,7 +7,7 @@ from catalog_app.models import Post
 
 # CRUD
 class CatalogViewSet(GenericViewSet, ListModelMixin, CreateModelMixin, DestroyModelMixin):
-    """Создаём класс вьюсет каталогов"""
+    """Создаём класс вьюсет каталога"""
     serializer_class = CatalogSerializer
     queryset = Post.objects.filter(is_public=True)
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]

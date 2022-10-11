@@ -9,43 +9,37 @@
                 </div>
                     {% if error %}
                         <h3 class="left-ads-display col-lg-9" style="color:#000000">{{ error }}</h3>
-                            {% else %}
+                    {% else %}
+                        <div class="item-info-product">
+                            {% for post in page_obj %}
                                 <div class="item-info-product">
-                                   {% for post in page_obj %}
-                                    <div class="item-info-product">
-                                        <div class="item-info-product" >
-                                            <br>
-                                                <div class="left-ads-display col-lg-9">
-                                                    <h4 style="color:#DAA520">tag: <a href="{% url 'get_tags' post.tag.title %}" style="color: #00CED1">{{ post.tag.title }}</a></h4>
-                                                </div>
-                                                    <br>
-                                                        <div class="product-shoe-info editContent text-center mt-lg-1" >
-                                                            <div class="item-info-product">
-                                                                <h2>
-                                                                    <a href="{% url 'product_single' pk=post.pk %}" class="" style="color:#FFD700">{{ post.title }}</a>
-                                                                </h2>
-                                                                    <div class="item-info-product">
-                                                                        {% for image in image_post %}
-                                                                        {% if image.post == post %}
-                                                                            <a href="{% url 'product_single' pk=post.pk %}" >
-                                                                                <img src="{{ image.image_post.url }}" class="img-fluid" target="_blank" alt="" width="500px" height="555px">
-                                                                            </a>
-                                                                        {% endif %}
-                                                                        {% endfor %}
-                                                                    </div>
-                                                                </div>
-                                                            <br>
-                                                        <h1 class="card text-white bg-primary mb-3" style="color:#000000"> <b>{{ post.price }} BYR</b> </h1>
-                                                        <h4 class="card text-white bg-warning mb-3" style="max-width: 18rem;" >{{ post.user }}</h4>
-                                                        <h4 class="card text-white bg-dark mb-3" style="max-width: 18rem;"><b>{{ post.created_at|date:"d/m/Y  H:i"}}</b></h4>
-                                                       </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <div>
-                                            {% empty %}
-                                                <h3 style="color:#000000">Oops. Oh no, we don't have any products yet. But you can create your own</h3>
-                                            {% endfor %}
-                                            {% endif %}
+                                    <br>
+                                        <div class="left-ads-display col-lg-9">
+                                            <h4 style="color:#DAA520">tag: <a href="{% url 'get_tags' post.tag.title %}" style="color: #00CED1">{{ post.tag.title }}</a></h4>
                                         </div>
+                                            <br>
+                                                <div class="product-shoe-info editContent text-center mt-lg-1" >
+                                                    <h2> <a href="{% url 'product_single' pk=post.pk %}" class="" style="color:#FFD700">{{ post.title }}</a></h2>
+                                                        <div class="item-info-product">
+                                                            {% for image in image_post %}
+                                                                {% if image.post == post %}
+                                                                    <a href="{% url 'product_single' pk=post.pk %}" >
+                                                                        <img src="{{ image.image_post.url }}" class="img-fluid" target="_blank" alt="" width="500px" height="555px">
+                                                                    </a>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                </div>
+                                            <br>
+                                                <h1 class="card text-white bg-primary mb-3" style="color:#000000"> <b>{{ post.price }} BYR</b> </h1>
+                                                <h4 class="card text-white bg-warning mb-3" style="max-width: 18rem;" >{{ post.user }}</h4>
+                                                <h4 class="card text-white bg-dark mb-3" style="max-width: 18rem;"><b>{{ post.created_at|date:"d/m/Y  H:i"}}</b></h4>
+                               </div>
+                        </div>
+                            {% endfor %}
+                    {% endif %}
+                    <div>
+                        {% empty %}
+                            <h3 style="color:#000000">Oops. Oh no, we don't have any products yet. But you can create your own</h3>
+                    </div>
 {% include 'include/pagination.html' %}

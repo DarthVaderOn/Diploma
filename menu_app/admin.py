@@ -14,7 +14,7 @@ class MenuAdmin(admin.ModelAdmin):
 
 @admin.register(MenuItem)
 class MenuItemAdmin(admin.ModelAdmin):
-    """Вывод полей меню в админке"""
+    """Вывод полей меню и настойки админки"""
     model = MenuItem
     list_display = ('menu', 'title', 'url', 'priority')
     list_display_links = ('menu', 'title', 'url',)

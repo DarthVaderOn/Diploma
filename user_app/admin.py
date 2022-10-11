@@ -14,7 +14,7 @@ class ProfileInline(admin.StackedInline):
 
 @admin.register(User)
 class UserAdmin(UserAdminBase):
-    """Вывод User (и Profile) в админке"""
+    """Вывод User (и Profile) и настойки админки"""
     inlines = (
         ProfileInline,
     )

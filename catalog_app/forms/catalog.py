@@ -3,7 +3,7 @@ from catalog_app.models import Post
 
 
 class PostForm(forms.ModelForm):
-    """Класс формы постов"""
+    """Форма создания продукта"""
     class Meta:
         model = Post
         fields = ['title', 'text', 'tag', 'year', 'price', 'country', 'is_public',]
@@ -17,6 +17,7 @@ class PostForm(forms.ModelForm):
 
 class AddImagePost(PostForm):
     """Класс формы изображений к постам"""
+    
     image = forms.ImageField(
         required=True,
         widget=forms.FileInput(attrs={'multiple': True})

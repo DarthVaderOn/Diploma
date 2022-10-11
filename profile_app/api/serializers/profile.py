@@ -4,7 +4,7 @@ from rest_framework import serializers
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    """Создаем класс сериалайзер профиля"""
+    """Создаем класс сериалайзер профиля пользователя"""
     user = UserSerializer(read_only=True)
     class Meta:
         model = Profile

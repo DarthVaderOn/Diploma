@@ -11,10 +11,11 @@ def user_redaction(request):
         profile_form = UpdateProForm(instance=request.user.profile, data=request.POST, files=request.FILES)
         image = Profile.objects.get(user=request.user.pk)
         if not profile_form.is_valid():
-            return render(request,'update_profile.html', {'user_form': user_form,
-                                                          'profile_form': profile_form,
-                                                          'image': image
-                                                          })
+            return render(request,'update_profile.html', {
+                'user_form': user_form,
+                'profile_form': profile_form,
+                'image': image
+            })
 
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
@@ -24,7 +25,8 @@ def user_redaction(request):
         user_form = UpdateUserForm(instance=request.user)
         profile_form = UpdateProForm(instance=request.user.profile)
         image = Profile.objects.get(user=request.user.pk)
-        return render(request,'update_profile.html', {'user_form': user_form,
-                                                      'profile_form': profile_form,
-                                                      'image': image
-                                                      })
+        return render(request,'update_profile.html', {
+            'user_form': user_form,
+            'profile_form': profile_form,
+            'image': image
+        })

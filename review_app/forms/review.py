@@ -17,6 +17,7 @@ class ReviewForm(forms.ModelForm):
 
 class AddImageReview(ReviewForm):
     """Класс формы изображений к отзывам"""
+
     image = forms.ImageField(
         required=False,
         widget=forms.FileInput(attrs={'multiple': True})

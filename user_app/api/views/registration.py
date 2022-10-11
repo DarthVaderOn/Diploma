@@ -6,7 +6,7 @@ from user_app.models import User
 
 
 class RegistrationViewSet(GenericViewSet, CreateModelMixin):
-    """Вьюсет регистрации"""
+    """Создаем класс вьюсет регистрации"""
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = [AllowAny]

@@ -10,22 +10,22 @@
             Your profile {{ user.username }}
         </h1>
             {% if avatar.avatar %}
-                <div>
+                <div class="left-ads-display col-lg-3">
                     <img src="{{ avatar.avatar.url }}" alt="" width="100px" height="100px">
                 </div>
                     {% else %}
                         <div class="left-ads-display col-lg-3">
                             <img src="https://cdn-icons-png.flaticon.com/512/1995/1995515.png" alt="" width="100px" height="100px">
                         </div>
-                            {% endif %}
-                                <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>Last Name:</b> <i style="color:#C0C0C0">{{ user.last_name }}</i></h5>
+            {% endif %}
+                <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>Last Name:</b> <i style="color:#C0C0C0">{{ user.last_name }}</i></h5>
+                    <hr>
+                        <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>First Name:</b> <i style="color:#C0C0C0">{{ user.first_name }}</i></h5>
+                            <hr>
+                                <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>Email:</b> <a style="color:#00FFFF" href="mailto:{{ user.email }}"> {{ user.email }}</a></h5>
                                     <hr>
-                                        <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>First Name:</b> <i style="color:#C0C0C0">{{ user.first_name }}</i></h5>
+                                        <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>Phone Number:</b> <a style="color:#00CED1" href="viber://chat?number={{ avatar.phone }}"> {{ avatar.phone }}</a></h5>
                                             <hr>
-                                                <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>Email:</b> <a style="color:#00FFFF" href="mailto:{{ user.email }}"> {{ user.email }}</a></h5>
+                                                <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>Information About You:</b> <i style="color:#C0C0C0">{{ avatar.about }}</i></h5>
                                                     <hr>
-                                                        <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>Phone Number:</b> <a style="color:#00CED1" href="viber://chat?number={{ avatar.phone }}"> {{ avatar.phone }}</a></h5>
-                                                            <hr>
-                                                                <h5 class="left-ads-display col-lg-9" style="color:#FFD700"><b>Information About You:</b> <i style="color:#C0C0C0">{{ avatar.about }}</i></h5>
-                                                                    <hr>
 {% endblock content %}
