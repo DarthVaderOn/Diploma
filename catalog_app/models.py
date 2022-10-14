@@ -1,4 +1,6 @@
+import datetime
 from django.db import models
+from django.utils import timezone
 from category_app.models import Tag
 from media_app.models import MediaFile
 from user_app.models import User
@@ -22,6 +24,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def was_published_recently(self):
+        return self.created_at >= (timezone.now() - datetime.timedelta(days=7))
 
 
 class Media(models.Model):
