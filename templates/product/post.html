@@ -23,7 +23,7 @@
                                                 <br>
                                                     <div class="product-shoe-info editContent text-center mt-lg-1" >
                                                         <h2> <a href="{% url 'product_single' pk=post.pk %}" class="" style="color:#FFD700">{{ post.title }}</a></h2>
-                                                            <div class="item-info-product">
+                                                            <div class="center-ads-display col-lg">
                                                                 {% for image in image_post %}
                                                                     {% if image.post == post %}
                                                                         <a href="{% url 'product_single' pk=post.pk %}" >
