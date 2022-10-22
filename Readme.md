@@ -75,31 +75,25 @@ class CatalogPageView(View):
 ___
 ### 
 - *Реализация регистрации пользователя.*<br/>
-<a href="https://ibb.co/sHwXsm2"><img src="https://i.ibb.co/jRMj36T/6.png" alt="6" border="0" /></a> <br/>
-<br/>
-### 
+<a href="https://ibb.co/sHwXsm2"><img src="https://i.ibb.co/jRMj36T/6.png" alt="6" border="0" /></a>
+
 - *Реализация авторизации пользователя.*<br/>
-<a href="https://ibb.co/gtHCVqH"><img src="https://i.ibb.co/QYzGdSz/5.png" alt="5" border="0" /></a> <br/>
-<br/>
-### 
+<a href="https://ibb.co/gtHCVqH"><img src="https://i.ibb.co/QYzGdSz/5.png" alt="5" border="0" /></a>
+
 - *Реализация товаров.*<br/>
-<a href="https://ibb.co/Sy4NxRy"><img src="https://i.ibb.co/3d91sBd/3.png" alt="3" border="0" /></a> <br/>
-<a href="https://ibb.co/CncX5xF"><img src="https://i.ibb.co/vJFrx28/9.png" alt="9" border="0" /></a> <br/>
-<a href="https://ibb.co/nMrVQgR"><img src="https://i.ibb.co/B2L7Tzw/11.png" alt="11" border="0" /></a> <br/>
-<br/>
-### 
+<a href="https://ibb.co/Sy4NxRy"><img src="https://i.ibb.co/3d91sBd/3.png" alt="3" border="0" /></a>
+<a href="https://ibb.co/CncX5xF"><img src="https://i.ibb.co/vJFrx28/9.png" alt="9" border="0" /></a> 
+<a href="https://ibb.co/nMrVQgR"><img src="https://i.ibb.co/B2L7Tzw/11.png" alt="11" border="0" /></a> 
+
 - *Реализация профиля пользователя.*<br/>
-<a href="https://ibb.co/tXzzHJB"><img src="https://i.ibb.co/bJFF6K1/2.png" alt="2" border="0" /></a> <br/>
-<a href="https://ibb.co/pZWXVPd"><img src="https://i.ibb.co/CvJ0CtQ/4.png" alt="4" border="0" /></a> <br/>
-<br/>
-### 
+<a href="https://ibb.co/tXzzHJB"><img src="https://i.ibb.co/bJFF6K1/2.png" alt="2" border="0" /></a> 
+<a href="https://ibb.co/pZWXVPd"><img src="https://i.ibb.co/CvJ0CtQ/4.png" alt="4" border="0" /></a> 
+
 - *Реализация отзывов и рейтинга к товару.*<br/>
-<a href="https://ibb.co/pX7BN64"><img src="https://i.ibb.co/3h39V5S/10.png" alt="10" border="0" /></a> <br/>
-<br/>
-### 
+<a href="https://ibb.co/pX7BN64"><img src="https://i.ibb.co/3h39V5S/10.png" alt="10" border="0" /></a> 
+
 - *Реализация Django Admin.*<br/>
-<a href="https://ibb.co/4Td6Lgg"><img src="https://i.ibb.co/tsX76PP/7.png" alt="7" border="0" /></a> <br/>
-<br/>
-### 
+<a href="https://ibb.co/4Td6Lgg"><img src="https://i.ibb.co/tsX76PP/7.png" alt="7" border="0" /></a>
+
 - *Реализация API с использованием DRF.*<br/>
-<a href="https://ibb.co/JzPkYLZ"><img src="https://i.ibb.co/D7nKBXd/8.png" alt="8" border="0" /></a> <br/>
+<a href="https://ibb.co/JzPkYLZ"><img src="https://i.ibb.co/D7nKBXd/8.png" alt="8" border="0" /></a>
