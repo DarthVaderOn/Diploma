@@ -42,7 +42,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['bee-online-shop-app.herokuapp.com']
@@ -225,11 +225,11 @@ CELERY_CACHE_BACKEND = 'django-cache'
 
 
 EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
-EMAIL_PORT = 465
+EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
 EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))           # Enter your email address
 EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))   # Enter your email password
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+EMAIL_USE_TLS = bool(int(os.getenv('EMAIL_USE_TLS')))
+EMAIL_USE_SSL = bool(int(os.getenv('EMAIL_USE_SSL')))
 
 
 # Django Debug Toolbar

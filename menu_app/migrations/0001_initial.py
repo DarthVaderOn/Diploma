@@ -8,7 +8,7 @@ def func(apps, schema_editor):
     MenuItem = apps.get_model('menu_app', 'MenuItem')
 
     menu = Menu.objects.create(menu_label="main_menu")
-    MenuItem.objects.create(menu=menu)
+    MenuItem.objects.create(menu=menu, title="Favorites Products", priority=1, url="/")
 
 
 class Migration(migrations.Migration):

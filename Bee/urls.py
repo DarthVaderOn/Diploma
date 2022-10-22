@@ -24,10 +24,6 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, Sp
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 
-def trigger_error(request):
-    division_by_zero = 1 / 0
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('catalog_app.urls')),
@@ -39,7 +35,6 @@ urlpatterns = [
     path('', include('user_app.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
-    path('sentry-debug/', trigger_error),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
