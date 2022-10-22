@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'admin_interface',
     'colorfield',
     'debug_toolbar',
+    'django_celery_results',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
