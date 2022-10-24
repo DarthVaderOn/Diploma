@@ -12,14 +12,14 @@ class PostAdminForm(forms.ModelForm):
     text = forms.CharField(label="Description", widget=CKEditorUploadingWidget())
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ('user', 'title', 'tag', 'text', 'year', 'country', 'price', 'is_public', )
 
 
 class MediaProductAdmin(admin.StackedInline):
-    """Вывод изображений товаров в админке"""
+    """Вывод изображений постов в админке"""
     model = Media
-    list_display = ('image_post','preview')
-    readonly_fields = ('image_post','preview')
+    list_display = ('post','preview')
+    readonly_fields = ('post','preview')
     extra = 1
 
 
@@ -32,12 +32,12 @@ class MediaProductAdmin(admin.StackedInline):
                 f'</a>'
             )
         else:
-            return 'No Image'
+            return "No Image"
 
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    """Вывод товаров с изображениями и настойки админки"""
+    """Вывод постов с изображениями"""
     inlines = (
         MediaProductAdmin,
     )
